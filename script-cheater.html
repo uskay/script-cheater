@@ -1,31 +1,7 @@
-<script>
-  const script = `
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-  
-  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-  
-  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-  Contrary to popular belief, Lorem Ipsum is not simply random text.
-  
-  It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-  
-  Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
-  
-  This book is a treatise on the theory of ethics, very popular during the Renaissance.
-  
-  The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-  
-  Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.  
-  `;
-</script>
-
-<!-- template -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  html, body {
+  html,
+  body {
     font-family: 'Roboto', sans-serif;
   }
   .background {
@@ -42,7 +18,7 @@
     color: white;
     font-size: 2.0em;
     position: relative;
-    text-align: center;;
+    text-align: center;
     line-height: 2em;
   }
   .main {
@@ -55,7 +31,7 @@
     color: gray;
     font-size: 1.0em;
     padding: 20px;
-    margin-top:20px;
+    margin-top: 20px;
     border-radius: 2px;
     letter-spacing: 0.8pt;
     box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
@@ -64,68 +40,109 @@
     font-size: 1.5em;
     color: black;
   }
+  .file-picker {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  .file-picker button {
+    margin-top: 20px;
+    width: 180px;
+    height: 50px;
+    font-size: 1.0em;
+    border-radius: 25px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    border: none;
+  }
+  .file-picker .title {
+    color: white;
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 </style>
 <div class="background"></div>
+<div class="file-picker">
+  <div class="title">
+    <div>script-cheater.html</div>
+    <button>LOAD SCRIPT</button>
+  </div>
+</div>
 <div class="header"></div>
 <div class="main"></div>
 <script>
-  // add paragrahps
-  script.split('\n').forEach(line => {
-    line = line.trim();
-    if(line === '') {
-      return;
-    }
-    const p = document.createElement('div');
-    p.classList.add('divP');
-    p.innerHTML = line;
-    document.querySelector('.main').append(p);
-  });
-  
-  // setting initial focus
-  let focusIndex = 0;
-  [...document.querySelectorAll('.divP')][focusIndex].classList.add('focus');
-  const updateIndex = _ => {
-    const length = [...document.querySelectorAll('.divP')].length;
-    const displayIndex = `${focusIndex + 1} / ${length}`;
-    document.querySelector('.header').innerText = displayIndex;
+  // choose script from file
+  const chooseFile = async _ => {
+    [fileHandle] = await window.showOpenFilePicker();
+    const file = await fileHandle.getFile();
+    const script = await file.text();
+    loadScript(script);
+    document.querySelector('.file-picker').style.display = 'none';
   }
-  updateIndex();
+  document.querySelector('.file-picker button')
+    .addEventListener('click', _ => {
+      chooseFile();
+    });
 
-  // adding keyboard events
-  document.addEventListener('keydown', evt => {
-    const changeFocus = _ => {
-      [...document.querySelectorAll('.divP')].forEach((elm, index) => {
-        if (index < focusIndex) {
-          elm.style.display = 'none';
-        } else {
-          elm.style.display = 'block';
-        }
-        if (index === focusIndex) {
-          elm.classList.add('focus');
-        } else {
-          elm.classList.remove('focus');
-        }
-      });
-    }
-    // key down
-    if (evt.keyCode === 40) {
-      if ([...document.querySelectorAll('.divP')].length - 1 !== focusIndex) {
-        focusIndex++;
+  const loadScript = script => {
+    // add paragrahps
+    script.split('\n').forEach(line => {
+      line = line.trim();
+      if (line === '') {
+        return;
       }
-      changeFocus();
-    }
-    
-    // key up
-    if (evt.keyCode === 38) {
-      if (focusIndex !== 0) {
-        focusIndex--;
-      }
-      changeFocus();
+      const p = document.createElement('div');
+      p.classList.add('divP');
+      p.innerHTML = line;
+      document.querySelector('.main').append(p);
+    });
+    // setting initial focus
+    let focusIndex = 0;
+    [...document.querySelectorAll('.divP')][focusIndex].classList.add('focus');
+    const updateIndex = _ => {
+      const length = [...document.querySelectorAll('.divP')].length;
+      const displayIndex = `${focusIndex + 1} / ${length}`;
+      document.querySelector('.header').innerText = displayIndex;
     }
     updateIndex();
-    
-    // prevent the default key events
-    evt.preventDefault();
-  });
+    // adding keyboard events
+    document.addEventListener('keydown', evt => {
+      const changeFocus = _ => {
+        [...document.querySelectorAll('.divP')].forEach((elm, index) => {
+          if (index < focusIndex) {
+            elm.style.display = 'none';
+          } else {
+            elm.style.display = 'block';
+          }
+          if (index === focusIndex) {
+            elm.classList.add('focus');
+          } else {
+            elm.classList.remove('focus');
+          }
+        });
+      }
+      // key down
+      if (evt.keyCode === 40) {
+        if ([...document.querySelectorAll('.divP')].length - 1 !== focusIndex) {
+          focusIndex++;
+        }
+        changeFocus();
+      }
+      // key up
+      if (evt.keyCode === 38) {
+        if (focusIndex !== 0) {
+          focusIndex--;
+        }
+        changeFocus();
+      }
+      updateIndex();
+      evt.preventDefault();
+    });
+  }
 </script>
-
