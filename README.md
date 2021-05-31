@@ -10,7 +10,7 @@ Use your keyboard to navigate your presentation through! i.e. `down` to move to 
 ## Why use this?
 This comes handy especially when
 
-- you are that kind of person who prefers not to write down and save your speaker notes in the presentation application itself
+- you are that kind of person who prefers not to write down and save your speaker notes in the presentation application itself e.g. Google Slides
 - but have your own secret plain text notes that you use to keep the things you will be saying
 - and you don't have controll over your presentation slides while presenting so all you need to do is read out the script
 
