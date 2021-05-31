@@ -8,7 +8,7 @@ Use your keyboard to navigate your presentation through! i.e. `down` to move to 
 - Hosted at Glitch: [https://uskay-script-cheater.glitch.me/](https://uskay-script-cheater.glitch.me/)
 
 ## Why use this?
-This comes handy especially when you are that kind of person who prefers not to write down and save your speaker notes in the presentation application itself, but have your own secret plain text notes to read out and you don't have controll over your presentation slides while presenting so all you need to do is read (well, trust me, I face these situation everyday!) 😂
+This comes handy especially when you are that kind of person who prefers not to write down and save your speaker notes in the presentation application itself, but have your own secret plain text notes to read out and you don't have controll over your presentation slides while presenting so all you need to do is read out the script (well, trust me, I face these situation everyday!) 😂
 
 ## How to use
 1. Prepare your presenation scripts in a simple text file. A line break will represent the separater between paragraphs.
