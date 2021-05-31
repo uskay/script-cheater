@@ -113,6 +113,10 @@
     updateIndex();
     // adding keyboard events
     document.addEventListener('keydown', evt => {
+      // handle either `down` or `up` events
+      if(!(evt.keyCode === 40 || evt.keyCode == 38)) {
+        return;
+      }
       const changeFocus = _ => {
         [...document.querySelectorAll('.divP')].forEach((elm, index) => {
           if (index < focusIndex) {
