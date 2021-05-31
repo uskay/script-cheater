@@ -1,5 +1,7 @@
 # script-cheater
-Simply display your presentation scripts without your eyes wondering around when presentating remotely via your webcam (you get to keep the paragraph you need to read out always at the very top!).
+Simply display your presentation scripts without your eyes wondering around when presentating remotely via your webcam (you get to keep the paragraph you need to read out always at the very top!). 
+
+Use your keyboard to navigate your presentation through! i.e. `down` to move to the next paragaraph and `up` to go back to the previous script.
 
 ![screenshot of the app](https://cdn.glitch.com/98449704-33d8-49b2-88f2-aa6d2aeba5d3%2Fscript-cheater.gif)
 
