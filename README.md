@@ -5,6 +5,8 @@ Use your keyboard to navigate your presentation through! i.e. `down` to move to 
 
 ![screenshot of the app](https://cdn.glitch.com/98449704-33d8-49b2-88f2-aa6d2aeba5d3%2Fscript-cheater.gif)
 
+- Hosted at Glitch: [https://uskay-script-cheater.glitch.me/](https://uskay-script-cheater.glitch.me/)
+
 ## How to use
 1. Prepare your presenation scripts in a simple text file. A line break will represent the separater between paragraphs.
 2. Load the HTML.
