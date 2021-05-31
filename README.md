@@ -11,7 +11,7 @@ Use your keyboard to navigate your presentation through! i.e. `down` to move to 
 1. Prepare your presenation scripts in a simple text file. A line break will represent the separater between paragraphs.
 2. Load the HTML.
 3. Choose the script and load the script.
-4. Press down or up to navigate through the paragraphs. The script you need to read will always be at the top.
+4. Press `down` or `up` to navigate through the paragraphs. The script you need to read will always be at the top.
 
 ## License
 Codes are Apache 2.0
