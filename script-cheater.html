@@ -69,6 +69,7 @@
 <div class="header"></div>
 <div class="main"></div>
 <script>
+  // add paragrahps
   script.split('\n').forEach(line => {
     line = line.trim();
     if(line === '') {
@@ -79,6 +80,8 @@
     p.innerHTML = line;
     document.querySelector('.main').append(p);
   });
+  
+  // setting initial focus
   let focusIndex = 0;
   [...document.querySelectorAll('.divP')][focusIndex].classList.add('focus');
   const updateIndex = _ => {
@@ -88,7 +91,7 @@
   }
   updateIndex();
 
-
+  // adding keyboard events
   document.addEventListener('keydown', evt => {
     const changeFocus = _ => {
       [...document.querySelectorAll('.divP')].forEach((elm, index) => {
@@ -97,7 +100,6 @@
         } else {
           elm.style.display = 'block';
         }
-
         if (index === focusIndex) {
           elm.classList.add('focus');
         } else {
@@ -105,12 +107,15 @@
         }
       });
     }
+    // key down
     if (evt.keyCode === 40) {
       if ([...document.querySelectorAll('.divP')].length - 1 !== focusIndex) {
         focusIndex++;
       }
       changeFocus();
     }
+    
+    // key up
     if (evt.keyCode === 38) {
       if (focusIndex !== 0) {
         focusIndex--;
@@ -118,6 +123,8 @@
       changeFocus();
     }
     updateIndex();
+    
+    // prevent the default key events
     evt.preventDefault();
   });
 </script>
